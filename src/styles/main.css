@@ -5,11 +5,11 @@
 }
 
 :root {
-  --color-wenge: hsl(57, 11%, 35%);
-  --color-pinetree: hsl(72, 6%, 16%);
+  --color-blackolive: hsl(60, 11%, 21%);
   --color-gainsboro: hsl(0, 0%, 87%);
 }
 
 #main-container {
   min-height: 100vh;
+  background: url(../assets/bg.jpg) no-repeat center center/cover;
 }
