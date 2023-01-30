@@ -1,6 +1,6 @@
-import gameboardFactory from '../js_modules/gameboardFactory';
-import player from '../js_modules/player';
-import shipFactory from '../js_modules/shipFactory';
+import gameboardFactory from '../src/modules/gameboardFactory';
+import player from '../src/modules/player';
+import shipFactory from '../src/modules/shipFactory';
 
 describe('Player', () => {
   let gameboard;

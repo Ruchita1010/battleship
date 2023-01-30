@@ -1,5 +1,5 @@
-import gameboardFactory from '../js_modules/gameboardFactory';
-import shipFactory from '../js_modules/shipFactory';
+import gameboardFactory from '../src/modules/gameboardFactory';
+import shipFactory from '../src/modules/shipFactory';
 
 describe('Gameboard Factory', () => {
   let gameboard;

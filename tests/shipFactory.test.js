@@ -1,4 +1,4 @@
-import shipFactory from '../js_modules/shipFactory';
+import shipFactory from '../src/modules/shipFactory';
 
 describe('Ship Factory', () => {
   it('should return the length of the ship', () => {

@@ -1,0 +1,40 @@
+#start-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: url(../assets/bg.jpg) no-repeat center center/cover;
+}
+
+#start-screen-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-input-elem {
+  padding: 0.8rem;
+  font-size: 4vmin;
+  color: var(--color-gainsboro);
+  border: none;
+  outline: none;
+}
+
+.form-label {
+  font-size: 4vmin;
+  color: var(--color-pinetree);
+}
+
+#name-input {
+  margin-bottom: 4rem;
+  background-color: var(--color-wenge);
+}
+
+#start-btn {
+  align-self: center;
+  background-color: var(--color-pinetree);
+}
+
+#start-btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
