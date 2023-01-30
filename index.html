@@ -8,24 +8,31 @@
   <script defer src="bundle.js"></script></head>
   <body>
     <div id="main-container">
-      <div id="start-screen">
-        <form action="#" id="start-screen-form">
-          <label for="name-input" class="form-label">Enter Troop's Name</label>
-          <input
-            type="text"
-            name="name-input"
-            id="name-input"
-            class="form-input-elem"
-            maxlength="30"
-            placeholder="e.g. The Humanoids"
-            required />
-          <input
-            type="submit"
-            value="START"
-            id="start-btn"
-            class="form-input-elem" />
-        </form>
-      </div>
+      <form action="#" id="start-screen">
+        <input
+          type="text"
+          name="troop-name"
+          id="troop-name"
+          maxlength="30"
+          placeholder="Enter Troop Name"
+          required />
+        <div>
+          <label for="auto" class="mode-label">
+            <input type="radio" name="mode" id="auto" value="auto" />
+            Auto
+          </label>
+          <label for="manual" class="mode-label">
+            <input
+              type="radio"
+              name="mode"
+              id="manual"
+              value="manual"
+              checked />
+            Manual
+          </label>
+        </div>
+        <input type="submit" value="START" id="start-btn" />
+      </form>
     </div>
   </body>
 </html>
