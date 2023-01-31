@@ -1,0 +1,23 @@
+#gameboards-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gameboard {
+  width: 35vmax;
+  height: 35vmax;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  border-top: 1px solid var(--color-blackolive);
+  border-right: 1px solid var(--color-blackolive);
+}
+
+.cell {
+  border-bottom: 1px solid var(--color-blackolive);
+  border-left: 1px solid var(--color-blackolive);
+}
