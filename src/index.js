@@ -1,8 +1,7 @@
 import './styles/gameboard.css';
 import './styles/main.css';
 import './styles/start-screen.css';
-import { clearMainContainer } from './modules/dom';
-import gameLoop from './modules/gameLoop';
+import { clearMainContainer, renderGameboardsScreen } from './modules/dom';
 
 const GAMEBOARDSIZE = 10;
 
@@ -11,7 +10,7 @@ const initGame = (e) => {
   const troopName = document.querySelector('#troop-name').value;
   const mode = document.querySelector('input[type="radio"]:checked').value;
   clearMainContainer();
-  gameLoop(troopName, mode, GAMEBOARDSIZE);
+  renderGameboardsScreen(GAMEBOARDSIZE);
 };
 
 const startScreen = document.querySelector('#start-screen');
