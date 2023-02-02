@@ -3,6 +3,11 @@ const clearMainContainer = () => {
   mainContainer.innerHTML = '';
 };
 
+const getOpponentGameboardCells = () => {
+  const gameboards = document.querySelectorAll('.gameboard');
+  return [...gameboards[1].children];
+};
+
 const createGameboardDOM = (gameboardSize) => {
   const gameboard = document.createElement('div');
   gameboard.classList.add('gameboard');
@@ -10,6 +15,8 @@ const createGameboardDOM = (gameboardSize) => {
     for (let j = 0; j < gameboardSize; j++) {
       let cell = document.createElement('div');
       cell.classList.add('cell');
+      // setting the coordinates as the id of the cell
+      cell.setAttribute('id', `${i}-${j}`);
       gameboard.appendChild(cell);
     }
   }
@@ -27,4 +34,8 @@ const renderGameboardsScreen = (gameboardSize) => {
   mainContainer.appendChild(gameboardsScreen);
 };
 
-export { clearMainContainer, renderGameboardsScreen };
+export {
+  clearMainContainer,
+  getOpponentGameboardCells,
+  renderGameboardsScreen,
+};
