@@ -10,7 +10,8 @@ describe('Gameboard Factory', () => {
   describe('Placing ship', () => {
     it('should place a ship at specific coordinates on x-axis', () => {
       const ship = shipFactory(3);
-      gameboard.placeShip(ship, 2, 3, 'horizontal');
+      const placed = gameboard.placeShip(ship, 2, 3, 'horizontal');
+      expect(placed).toBe(true);
       expect(gameboard.grid[2][3]).toBe(1);
       expect(gameboard.grid[2][4]).toBe(1);
       expect(gameboard.grid[2][5]).toBe(1);
@@ -18,23 +19,25 @@ describe('Gameboard Factory', () => {
 
     it('should place a ship at specific coordinates on y-axis', () => {
       const ship = shipFactory(2);
-      gameboard.placeShip(ship, 1, 1, 'vertical');
+      const placed = gameboard.placeShip(ship, 1, 1, 'vertical');
+      expect(placed).toBe(true);
       expect(gameboard.grid[1][1]).toBe(1);
       expect(gameboard.grid[2][1]).toBe(1);
     });
 
     it('should not place a ship when it goes out of bounds', () => {
       const ship = shipFactory(2);
-      gameboard.placeShip(ship, 9, 9, 'vertical');
-      expect(gameboard.placedShips.length).toBe(0);
+      const placed = gameboard.placeShip(ship, 9, 9, 'vertical');
+      expect(placed).toBe(false);
     });
 
     it('should not place a ship when it overlaps with another ship', () => {
       const ship1 = shipFactory(2);
-      gameboard.placeShip(ship1, 4, 5, 'vertical');
+      const placed1 = gameboard.placeShip(ship1, 4, 5, 'vertical');
+      expect(placed1).toBe(true);
       const ship2 = shipFactory(2);
-      gameboard.placeShip(ship2, 4, 5, 'horizontal');
-      expect(gameboard.placedShips.length).toBe(1);
+      const placed2 = gameboard.placeShip(ship2, 4, 5, 'horizontal');
+      expect(placed2).toBe(false);
     });
   });
 
