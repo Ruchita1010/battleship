@@ -20,6 +20,18 @@ const markCell = (coords, hit, gameboardIndex) => {
   targetCell.classList.add('miss');
 };
 
+const renderShips = (grid) => {
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      if (grid[i][j] === 1) {
+        const cells = getGameboardCells(0);
+        const cellElem = cells.find((cell) => cell.id === `${i}-${j}`);
+        cellElem.style.backgroundColor = 'green';
+      }
+    }
+  }
+};
+
 const createGameboardDOM = (gameboardSize) => {
   const gameboard = document.createElement('div');
   gameboard.classList.add('gameboard');
@@ -50,5 +62,6 @@ export {
   clearMainContainer,
   getGameboardCells,
   markCell,
+  renderShips,
   renderGameboardsScreen,
 };

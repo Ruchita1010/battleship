@@ -1,3 +1,4 @@
+import { renderShips } from './dom';
 import startManualMode from './modes';
 import player from './player';
 import shipFactory from './shipFactory';
@@ -18,6 +19,7 @@ const game = (name, mode, gameboardSize) => {
   const ships = initShips();
   human.placeShipsRandomly(ships);
   bot.placeShipsRandomly(ships);
+  renderShips(human.gameboard.grid);
 
   if (mode === 'manual') {
     startManualMode(human, bot);
