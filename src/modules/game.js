@@ -2,15 +2,22 @@ import startManualMode from './modes';
 import player from './player';
 import shipFactory from './shipFactory';
 
+const initShips = () => {
+  const ships = [];
+  const sizes = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
+  sizes.forEach((size) => {
+    const ship = shipFactory(size);
+    ships.push(ship);
+  });
+  return ships;
+};
+
 const game = (name, mode, gameboardSize) => {
   const human = player(name, gameboardSize);
   const bot = player('Robobo', gameboardSize);
-
-  // system for allowing players to place their ships to be implemented later
-  human.gameboard.placeShip(shipFactory(2), 2, 3, 'horizontal');
-  human.gameboard.placeShip(shipFactory(3), 2, 2, 'vertical');
-  bot.gameboard.placeShip(shipFactory(2), 1, 1, 'horizontal');
-  bot.gameboard.placeShip(shipFactory(3), 4, 4, 'vertical');
+  const ships = initShips();
+  human.placeShipsRandomly(ships);
+  bot.placeShipsRandomly(ships);
 
   if (mode === 'manual') {
     startManualMode(human, bot);

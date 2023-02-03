@@ -32,10 +32,23 @@ const player = (name, gameboardSize) => {
     return result;
   };
 
+  const placeShipsRandomly = (ships) => {
+    ships.forEach((ship) => {
+      let placed = false;
+      while (!placed) {
+        let x = Math.floor(Math.random() * gameboardSize);
+        let y = Math.floor(Math.random() * gameboardSize);
+        let orientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+        placed = gameboard.placeShip(ship, x, y, orientation);
+      }
+    });
+  };
+
   return {
     attackedCoordinates,
     gameboard,
     name,
+    placeShipsRandomly,
     play,
   };
 };
