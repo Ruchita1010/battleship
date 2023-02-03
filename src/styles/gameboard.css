@@ -21,3 +21,11 @@
   border-bottom: 1px solid var(--color-blackolive);
   border-left: 1px solid var(--color-blackolive);
 }
+
+.hit {
+  background-color: red;
+}
+
+.miss {
+  background-color: white;
+}

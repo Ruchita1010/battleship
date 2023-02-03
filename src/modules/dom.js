@@ -3,9 +3,21 @@ const clearMainContainer = () => {
   mainContainer.innerHTML = '';
 };
 
-const getOpponentGameboardCells = () => {
+const getGameboardCells = (index) => {
   const gameboards = document.querySelectorAll('.gameboard');
-  return [...gameboards[1].children];
+  return [...gameboards[index].children];
+};
+
+const markCell = (coords, hit, gameboardIndex) => {
+  const cells = getGameboardCells(gameboardIndex);
+  const targetCell = cells.find(
+    (cell) => cell.id === `${coords[0]}-${coords[1]}`
+  );
+  if (hit) {
+    targetCell.classList.add('hit');
+    return;
+  }
+  targetCell.classList.add('miss');
 };
 
 const createGameboardDOM = (gameboardSize) => {
@@ -36,6 +48,7 @@ const renderGameboardsScreen = (gameboardSize) => {
 
 export {
   clearMainContainer,
-  getOpponentGameboardCells,
+  getGameboardCells,
+  markCell,
   renderGameboardsScreen,
 };

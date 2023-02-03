@@ -24,9 +24,10 @@ const player = (name, gameboardSize) => {
 
   const play = (enemy, clickedElem, random) => {
     const [x, y] = getCoords(enemy.attackedCoordinates, clickedElem, random);
-    const result = enemy.gameboard.receiveAttack(x, y);
+    const hit = enemy.gameboard.receiveAttack(x, y);
+    let result = { coords: [x, y], hit, win: false };
     if (enemy.gameboard.isFleetSunk()) {
-      return 'win';
+      result.win = true;
     }
     return result;
   };

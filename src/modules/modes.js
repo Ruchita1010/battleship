@@ -1,22 +1,24 @@
-import { getOpponentGameboardCells } from './dom';
+import { getGameboardCells, markCell } from './dom';
 
 const playTurns = async (human, bot, e) => {
   let result;
   result = human.play(bot, e.target.id, false);
-  if (result === 'win') {
+  markCell(result.coords, result.hit, 1);
+  if (result.win) {
     console.log(human.name);
     return;
   }
   await new Promise((resolve) => setTimeout(resolve, 1000));
   result = bot.play(human, null, true);
-  if (result === 'win') {
+  markCell(result.coords, result.hit, 0);
+  if (result.win) {
     console.log(bot.name);
     return;
   }
 };
 
 const startManualMode = (human, bot) => {
-  const cells = getOpponentGameboardCells();
+  const cells = getGameboardCells(1);
   cells.forEach((cell) => {
     cell.addEventListener('click', playTurns.bind(null, human, bot), {
       once: true,
