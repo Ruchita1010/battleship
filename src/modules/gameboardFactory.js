@@ -7,20 +7,21 @@ const gameboardFactory = (size) => {
     let coordinates = [];
     // ṭo check that the ship gets placed within the board
     if (x + ship.length > size || y + ship.length > size) {
-      return;
+      return false;
     }
     for (let i = 0; i < ship.length; i++) {
       let X = orientation === 'vertical' ? x + i : x;
       let Y = orientation === 'vertical' ? y : y + i;
       // to check if any ship is already placed at the coordinate
       if (grid[X][Y] !== 0) {
-        return;
+        return false;
       }
       grid[X][Y] = 1;
       coordinates.push({ xCoord: X, yCoord: Y });
     }
     // to keep track of the placed ships
     placedShips.push({ ship, orientation, coordinates });
+    return true;
   };
 
   const receiveAttack = (x, y) => {
