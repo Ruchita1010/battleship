@@ -6,7 +6,7 @@ const player = (name, gameboardSize) => {
 
   const getCoords = (attackedCoords, clickedElem, random) => {
     if (!random) {
-      return clickedElem.split('-').map(Number);
+      return clickedElem.split('').map(Number);
     }
     let x, y;
     do {

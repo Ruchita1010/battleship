@@ -11,7 +11,7 @@ const getGameboardCells = (index) => {
 const markCell = (coords, hit, gameboardIndex) => {
   const cells = getGameboardCells(gameboardIndex);
   const targetCell = cells.find(
-    (cell) => cell.id === `${coords[0]}-${coords[1]}`
+    (cell) => cell.id === `${coords[0]}${coords[1]}`
   );
   if (hit) {
     targetCell.classList.add('hit');
@@ -25,7 +25,7 @@ const renderShips = (grid) => {
     for (let j = 0; j < grid[i].length; j++) {
       if (grid[i][j] === 1) {
         const cells = getGameboardCells(0);
-        const cellElem = cells.find((cell) => cell.id === `${i}-${j}`);
+        const cellElem = cells.find((cell) => cell.id === `${i}${j}`);
         cellElem.style.backgroundColor = 'green';
       }
     }
@@ -40,7 +40,7 @@ const createGameboardDOM = (gameboardSize) => {
       let cell = document.createElement('div');
       cell.classList.add('cell');
       // setting the coordinates as the id of the cell
-      cell.setAttribute('id', `${i}-${j}`);
+      cell.setAttribute('id', `${i}${j}`);
       gameboard.appendChild(cell);
     }
   }
