@@ -1,26 +1,21 @@
-import { renderShips } from './dom';
+import { clearGameboard, renderShip } from './dom/gameboardsScreen';
 import startManualMode from './modes';
-import player from './player';
-import shipFactory from './shipFactory';
 
-const initShips = () => {
-  const ships = [];
-  const sizes = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
-  sizes.forEach((size) => {
-    const ship = shipFactory(size);
-    ships.push(ship);
+const placeShipsRandomlyOnBoard = (human, ships) => {
+  clearGameboard();
+  human.placeShipsRandomly(ships);
+  const placedShips = human.gameboard.placedShips;
+  placedShips.forEach((placedShip) => {
+    renderShip(placedShip);
   });
-  return ships;
 };
 
-const game = (name, mode, gameboardSize) => {
-  const human = player(name, gameboardSize);
-  const bot = player('Robobo', gameboardSize);
-  const ships = initShips();
-  human.placeShipsRandomly(ships);
-  bot.placeShipsRandomly(ships);
-  renderShips(human.gameboard.grid);
-
+const game = (mode, human, bot, ships) => {
+  const randomizeBoardBtn = document.querySelector('#randomize-board-btn');
+  randomizeBoardBtn.addEventListener(
+    'click',
+    placeShipsRandomlyOnBoard.bind(null, human, ships)
+  );
   if (mode === 'manual') {
     startManualMode(human, bot);
   }

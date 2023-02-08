@@ -1,4 +1,5 @@
-import { getGameboardCells, markCell } from './dom';
+import { markCell } from './dom/gameboardsScreen';
+import { getGameboardCells } from './dom/utils';
 
 const playTurns = async (human, bot, e) => {
   let result;

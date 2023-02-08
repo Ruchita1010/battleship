@@ -33,6 +33,8 @@ const player = (name, gameboardSize) => {
   };
 
   const placeShipsRandomly = (ships) => {
+    // to remove previous placed ships (both from grid and placedShips array)
+    gameboard.reset();
     ships.forEach((ship) => {
       let placed = false;
       while (!placed) {

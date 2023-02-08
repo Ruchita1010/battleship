@@ -6,10 +6,24 @@
 
 :root {
   --color-blackolive: hsl(60, 11%, 21%);
+  --color-blackolive-transparent: hsla(60, 10%, 21%, 0.452);
   --color-gainsboro: hsl(0, 0%, 87%);
 }
 
 #main-container {
   min-height: 100vh;
   background: url(../assets/bg.jpg) no-repeat center center/cover;
+}
+
+.btn {
+  color: var(--color-gainsboro);
+  background-color: var(--color-blackolive);
+  letter-spacing: 4px;
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.02);
 }

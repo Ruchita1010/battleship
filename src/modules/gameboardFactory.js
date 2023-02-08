@@ -44,6 +44,15 @@ const gameboardFactory = (size) => {
     return placedShips.every((placedShip) => placedShip.ship.isSunk());
   };
 
+  const reset = () => {
+    grid.forEach((row) => {
+      row.forEach((cell, index) => {
+        row[index] = 0;
+      });
+    });
+    placedShips.length = 0;
+  };
+
   return {
     grid,
     missedShots,
@@ -52,6 +61,7 @@ const gameboardFactory = (size) => {
     isFleetSunk,
     placeShip,
     receiveAttack,
+    reset,
   };
 };
 
