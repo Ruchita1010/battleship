@@ -1,5 +1,6 @@
 import { renderGameboardsScreen } from './dom/gameboardsScreen';
 import { randomizeBoard, resetBoard } from './dom/shipsPlacement';
+import { toggleVeil } from './dom/utils';
 import startManualMode from './modes';
 
 const setGame = (mode, human, bot, ships) => {
@@ -11,9 +12,14 @@ const setGame = (mode, human, bot, ships) => {
   );
   const resetBoardBtn = document.querySelector('#reset-board-btn');
   resetBoardBtn.addEventListener('click', resetBoard.bind(null, human, ships));
-  if (mode === 'manual') {
-    startManualMode(human, bot);
-  }
+  // starts game play
+  const playBtn = document.querySelector('#play-btn');
+  playBtn.addEventListener('click', () => {
+    toggleVeil();
+    if (mode === 'manual') {
+      startManualMode(human, bot, ships);
+    }
+  });
 };
 
 export default setGame;

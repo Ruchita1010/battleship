@@ -51,3 +51,23 @@
 .miss {
   background-color: white;
 }
+
+.veil {
+  position: absolute;
+  top: -4px;
+  left: -2px;
+  bottom: -4px;
+  right: -2px;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(6px);
+}
+
+#play-btn {
+  padding: 1vmax;
+  font-size: 2vmax;
+}
+
+.hide {
+  display: none;
+}

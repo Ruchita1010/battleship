@@ -24,4 +24,25 @@ const getModal = () => {
   return modal;
 };
 
-export { clearMainContainer, createButton, getGameboardCells, getModal };
+const toggleVeil = () => {
+  const veilElem = document.querySelector('.veil');
+  if (veilElem) {
+    veilElem.remove();
+    return;
+  }
+  const gameboard = document.querySelectorAll('.gameboard')[1];
+  gameboard.style.position = 'relative';
+  const veil = document.createElement('div');
+  veil.classList.add('veil');
+  const playButton = createButton('PLAY', 'play-btn');
+  veil.appendChild(playButton);
+  gameboard.appendChild(veil);
+};
+
+export {
+  clearMainContainer,
+  createButton,
+  getGameboardCells,
+  getModal,
+  toggleVeil,
+};

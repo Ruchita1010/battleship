@@ -1,4 +1,9 @@
-import { clearMainContainer, createButton, getGameboardCells } from './utils';
+import {
+  clearMainContainer,
+  createButton,
+  getGameboardCells,
+  toggleVeil,
+} from './utils';
 
 const createGameboardContainer = () => {
   const gameboardContainer = document.createElement('div');
@@ -62,6 +67,7 @@ const renderGameboardsScreen = (gameboardSize) => {
   const gameboardsScreen = createGameboardsScreen(gameboardSize);
   const mainContainer = document.querySelector('#main-container');
   mainContainer.appendChild(gameboardsScreen);
+  toggleVeil();
 };
 
 const clearGameboard = () => {
