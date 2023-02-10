@@ -83,11 +83,11 @@ const markCell = (coords, hit, gameboardIndex) => {
   targetCell.classList.add('miss');
 };
 
-const renderShip = (placedShip) => {
-  const cells = getGameboardCells(0);
+const renderShip = (placedShip, gameboardCells) => {
   const { ship, coordinates, orientation } = placedShip;
-  const targetCell = cells.find(
-    (cell) => cell.id === `${coordinates[0].xCoord}${coordinates[0].yCoord}`
+  const targetCell = gameboardCells.find(
+    (gameboardCell) =>
+      gameboardCell.id === `${coordinates[0].xCoord}${coordinates[0].yCoord}`
   );
   const domShip = document.createElement('div');
   domShip.classList.add('ship');
@@ -102,4 +102,10 @@ const renderShip = (placedShip) => {
   return;
 };
 
-export { clearGameboard, markCell, renderGameboardsScreen, renderShip };
+export {
+  clearGameboard,
+  createGameboardDOM,
+  markCell,
+  renderGameboardsScreen,
+  renderShip,
+};

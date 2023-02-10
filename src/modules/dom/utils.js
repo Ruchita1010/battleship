@@ -16,4 +16,12 @@ const getGameboardCells = (index) => {
   return [...gameboards[index].children];
 };
 
-export { clearMainContainer, createButton, getGameboardCells };
+const getModal = () => {
+  const modal = document.createElement('div');
+  modal.id = 'modal';
+  const mainContainer = document.querySelector('#main-container');
+  mainContainer.appendChild(modal);
+  return modal;
+};
+
+export { clearMainContainer, createButton, getGameboardCells, getModal };

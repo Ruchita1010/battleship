@@ -1,0 +1,32 @@
+#modal {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  background: url(../assets/bg.jpg) no-repeat center/cover;
+}
+
+#port {
+  width: 35vmax;
+  height: 35vmax;
+  display: grid;
+  align-items: center;
+}
+
+.ship-container {
+  display: flex;
+  justify-content: end;
+}
+
+.draggable-ship {
+  height: 3.5vmax;
+  margin-left: 2vmax;
+  background-color: var(--color-blackolive-transparent);
+  border: 4px solid var(--color-blackolive);
+  cursor: grab;
+}
