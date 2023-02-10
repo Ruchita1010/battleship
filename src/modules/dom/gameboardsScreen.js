@@ -108,10 +108,18 @@ const renderShip = (placedShip, gameboardCells) => {
   return;
 };
 
+const removeBoardBtns = () => {
+  const boardBtns = document.querySelectorAll('.board-btn');
+  boardBtns.forEach((boardBtn) => {
+    boardBtn.remove();
+  });
+};
+
 export {
   clearGameboard,
   createGameboardDOM,
   markCell,
+  removeBoardBtns,
   renderGameboardsScreen,
   renderShip,
 };

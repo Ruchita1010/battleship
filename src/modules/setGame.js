@@ -1,4 +1,7 @@
-import { renderGameboardsScreen } from './dom/gameboardsScreen';
+import {
+  removeBoardBtns,
+  renderGameboardsScreen,
+} from './dom/gameboardsScreen';
 import { randomizeBoard, resetBoard } from './dom/shipsPlacement';
 import { toggleVeil } from './dom/utils';
 import startManualMode from './modes';
@@ -15,6 +18,7 @@ const setGame = (mode, human, bot, ships) => {
   // starts game play
   const playBtn = document.querySelector('#play-btn');
   playBtn.addEventListener('click', () => {
+    removeBoardBtns();
     toggleVeil();
     if (mode === 'manual') {
       startManualMode(human, bot, ships);
