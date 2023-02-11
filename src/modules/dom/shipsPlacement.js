@@ -5,6 +5,20 @@ import {
 } from './gameboardsScreen';
 import { getGameboardCells, getModal } from './utils';
 
+const toggleShipOrientation = (shipLength, e) => {
+  const currShip = e.target;
+  const currOrientation = currShip.dataset.orientation;
+  if (currOrientation === 'horizontal') {
+    currShip.style.width = '3.5vmax';
+    currShip.style.height = `${shipLength * 3.5}vmax`;
+    currShip.dataset.orientation = 'vertical';
+    return;
+  }
+  currShip.style.height = '3.5vmax';
+  currShip.style.width = `${shipLength * 3.5}vmax`;
+  currShip.dataset.orientation = 'horizontal';
+};
+
 const createShipsDOM = (ships) => {
   const shipsContainer = document.createElement('div');
   shipsContainer.id = 'port';
@@ -13,10 +27,15 @@ const createShipsDOM = (ships) => {
   let shipContainer;
   ships.forEach((ship) => {
     const draggableShip = document.createElement('div');
+    draggableShip.id = shipsCount;
     draggableShip.classList.add('draggable-ship');
     draggableShip.setAttribute('draggable', 'true');
-    draggableShip.id = shipsCount;
+    draggableShip.setAttribute('data-orientation', 'horizontal');
     draggableShip.style.width = `${ship.length * 3.5}vmax`;
+    draggableShip.addEventListener(
+      'click',
+      toggleShipOrientation.bind(null, ship.length)
+    );
     // to put ships of same length in one container
     if (prevShipLength === ship.length) {
       shipContainer.appendChild(draggableShip);
@@ -57,7 +76,7 @@ const dragAndDropShips = (human, ships, gameboard) => {
       ships[draggedShip.id],
       Number(x),
       Number(y),
-      'horizontal'
+      draggedShip.dataset.orientation
     );
     if (placed) {
       placedShipsCount++;
