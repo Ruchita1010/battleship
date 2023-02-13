@@ -1,11 +1,25 @@
-import { markCell, removeBoardBtns } from './dom/gameboardsScreen';
+import { markCell, removeBoardBtns, renderShip } from './dom/gameboardsScreen';
 import { getGameboardCells, toggleVeil } from './dom/utils';
 import renderWinner from './dom/winnerScreen';
+
+const renderedSunkShips = [];
+const renderSunkShip = (player) => {
+  const cells = getGameboardCells(1);
+  player.gameboard.placedShips.forEach((placedShip) => {
+    const rendered = renderedSunkShips.includes(placedShip.ship);
+    if (placedShip.ship.isSunk() && !rendered) {
+      renderShip(placedShip, cells);
+      renderedSunkShips.push(placedShip.ship);
+      return;
+    }
+  });
+};
 
 const playTurns = async (human, bot, e) => {
   let result;
   result = human.play(bot, e.target.id, false);
   markCell(result.coords, result.hit, 1);
+  renderSunkShip(bot);
   if (result.win) {
     renderWinner(human.name);
     return;
@@ -35,6 +49,9 @@ const startAutoMode = (player1, player2) => {
     const result = currPlayer.play(enemy, null, true);
     const enemyBoardIndex = currPlayer === player1 ? 1 : 0;
     markCell(result.coords, result.hit, enemyBoardIndex);
+    if (currPlayer === player1) {
+      renderSunkShip(enemy);
+    }
     if (result.win) {
       renderWinner(currPlayer.name);
       clearInterval(gameInterval);
