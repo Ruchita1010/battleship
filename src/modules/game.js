@@ -1,5 +1,5 @@
-import { markCell } from './dom/gameboardsScreen';
-import { getGameboardCells } from './dom/utils';
+import { markCell, removeBoardBtns } from './dom/gameboardsScreen';
+import { getGameboardCells, toggleVeil } from './dom/utils';
 
 const playTurns = async (human, bot, e) => {
   let result;
@@ -27,4 +27,12 @@ const startManualMode = (human, bot) => {
   });
 };
 
-export default startManualMode;
+const game = (mode, human, bot) => {
+  removeBoardBtns();
+  toggleVeil();
+  if (mode === 'manual') {
+    startManualMode(human, bot);
+  }
+};
+
+export default game;

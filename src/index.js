@@ -2,21 +2,12 @@ import './styles/gameboard.css';
 import './styles/main.css';
 import './styles/modal.css';
 import './styles/start-screen.css';
+import { renderGameboardsScreen } from './modules/dom/gameboardsScreen';
+import { randomizeBoard, resetBoard } from './modules/dom/shipsPlacement';
+import game from './modules/game';
 import player from './modules/player';
-import setGame from './modules/setGame';
-import shipFactory from './modules/shipFactory';
 
 const GAMEBOARDSIZE = 10;
-
-const initShips = () => {
-  const ships = [];
-  const sizes = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
-  sizes.forEach((size) => {
-    const ship = shipFactory(size);
-    ships.push(ship);
-  });
-  return ships;
-};
 
 const initGame = (e) => {
   e.preventDefault();
@@ -24,8 +15,16 @@ const initGame = (e) => {
   const mode = document.querySelector('input[type="radio"]:checked').value;
   const human = player(troopName, GAMEBOARDSIZE);
   const bot = player('Robobo', GAMEBOARDSIZE);
-  const ships = initShips();
-  setGame(mode, human, bot, ships);
+  renderGameboardsScreen(human.gameboard.size);
+  // placing ships on board
+  bot.placeShipsRandomly();
+  const randomizeBoardBtn = document.querySelector('#randomize-board-btn');
+  randomizeBoardBtn.addEventListener('click', randomizeBoard.bind(null, human));
+  const resetBoardBtn = document.querySelector('#reset-board-btn');
+  resetBoardBtn.addEventListener('click', resetBoard.bind(null, human));
+  // starts game
+  const playBtn = document.querySelector('#play-btn');
+  playBtn.addEventListener('click', game.bind(null, mode, human, bot));
 };
 
 const startScreen = document.querySelector('#start-screen');

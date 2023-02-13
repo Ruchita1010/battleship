@@ -58,7 +58,7 @@ const renderAllShips = (placedShips) => {
   });
 };
 
-const dragAndDropShips = (human, ships, gameboard) => {
+const dragAndDropShips = (player, gameboard) => {
   let draggedShip,
     placedShipsCount = 0;
   const draggableShips = document.querySelectorAll('.draggable-ship');
@@ -72,8 +72,8 @@ const dragAndDropShips = (human, ships, gameboard) => {
   });
   gameboard.addEventListener('drop', (e) => {
     const [x, y] = e.target.id.split('');
-    const placed = human.gameboard.placeShip(
-      ships[draggedShip.id],
+    const placed = player.gameboard.placeShip(
+      player.ships[draggedShip.id],
       Number(x),
       Number(y),
       draggedShip.dataset.orientation
@@ -81,33 +81,33 @@ const dragAndDropShips = (human, ships, gameboard) => {
     if (placed) {
       placedShipsCount++;
       draggedShip.remove();
-      const placedShip = human.gameboard.placedShips[placedShipsCount - 1];
+      const placedShip = player.gameboard.placedShips[placedShipsCount - 1];
       renderShip(placedShip, [...gameboard.children]);
     }
     if (placedShipsCount === 10) {
       const modal = document.querySelector('#modal');
       modal.remove();
-      const placedShips = human.gameboard.placedShips;
+      const placedShips = player.gameboard.placedShips;
       renderAllShips(placedShips);
       return;
     }
   });
 };
 
-const resetBoard = (player, ships) => {
-  player.gameboard.reset(ships);
+const resetBoard = (player) => {
+  player.gameboard.reset();
   clearGameboard();
   const modal = getModal();
   const tempGameboard = createGameboardDOM(player.gameboard.size);
-  const shipsContainer = createShipsDOM(ships);
+  const shipsContainer = createShipsDOM(player.ships);
   modal.appendChild(tempGameboard);
   modal.appendChild(shipsContainer);
-  dragAndDropShips(player, ships, tempGameboard);
+  dragAndDropShips(player, tempGameboard);
 };
 
-const randomizeBoard = (player, ships) => {
+const randomizeBoard = (player) => {
   clearGameboard();
-  player.placeShipsRandomly(ships);
+  player.placeShipsRandomly();
   const placedShips = player.gameboard.placedShips;
   renderAllShips(placedShips);
 };

@@ -1,8 +1,11 @@
 import gameboardFactory from './gameboardFactory';
+import shipFactory from './shipFactory';
 
 const player = (name, gameboardSize) => {
   const gameboard = gameboardFactory(gameboardSize);
   const attackedCoordinates = [];
+  const shipSizes = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
+  const ships = shipSizes.map((shipSize) => shipFactory(shipSize));
 
   const getCoords = (attackedCoords, clickedElem, random) => {
     if (!random) {
@@ -32,7 +35,7 @@ const player = (name, gameboardSize) => {
     return result;
   };
 
-  const placeShipsRandomly = (ships) => {
+  const placeShipsRandomly = () => {
     // to remove previous placed ships (both from grid and placedShips array)
     gameboard.reset();
     ships.forEach((ship) => {
@@ -50,6 +53,7 @@ const player = (name, gameboardSize) => {
     attackedCoordinates,
     gameboard,
     name,
+    ships,
     placeShipsRandomly,
     play,
   };
