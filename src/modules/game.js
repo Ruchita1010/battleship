@@ -1,19 +1,20 @@
 import { markCell, removeBoardBtns } from './dom/gameboardsScreen';
 import { getGameboardCells, toggleVeil } from './dom/utils';
+import renderWinner from './dom/winnerScreen';
 
 const playTurns = async (human, bot, e) => {
   let result;
   result = human.play(bot, e.target.id, false);
   markCell(result.coords, result.hit, 1);
   if (result.win) {
-    console.log(human.name);
+    renderWinner(human.name);
     return;
   }
   await new Promise((resolve) => setTimeout(resolve, 1000));
   result = bot.play(human, null, true);
   markCell(result.coords, result.hit, 0);
   if (result.win) {
-    console.log(bot.name);
+    renderWinner(bot.name);
     return;
   }
 };
@@ -35,7 +36,7 @@ const startAutoMode = (player1, player2) => {
     const enemyBoardIndex = currPlayer === player1 ? 1 : 0;
     markCell(result.coords, result.hit, enemyBoardIndex);
     if (result.win) {
-      console.log(currPlayer.name);
+      renderWinner(currPlayer.name);
       clearInterval(gameInterval);
     }
     currPlayer = currPlayer === player1 ? player2 : player1;
