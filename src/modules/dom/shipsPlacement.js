@@ -112,4 +112,4 @@ const randomizeBoard = (player) => {
   renderAllShips(placedShips);
 };
 
-export { randomizeBoard, resetBoard };
+export { renderAllShips, randomizeBoard, resetBoard };

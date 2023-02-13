@@ -3,7 +3,11 @@ import './styles/main.css';
 import './styles/modal.css';
 import './styles/start-screen.css';
 import { renderGameboardsScreen } from './modules/dom/gameboardsScreen';
-import { randomizeBoard, resetBoard } from './modules/dom/shipsPlacement';
+import {
+  randomizeBoard,
+  renderAllShips,
+  resetBoard,
+} from './modules/dom/shipsPlacement';
 import game from './modules/game';
 import player from './modules/player';
 
@@ -18,6 +22,8 @@ const initGame = (e) => {
   renderGameboardsScreen(human.gameboard.size);
   // placing ships on board
   bot.placeShipsRandomly();
+  human.placeShipsRandomly();
+  renderAllShips(human.gameboard.placedShips);
   const randomizeBoardBtn = document.querySelector('#randomize-board-btn');
   randomizeBoardBtn.addEventListener('click', randomizeBoard.bind(null, human));
   const resetBoardBtn = document.querySelector('#reset-board-btn');
