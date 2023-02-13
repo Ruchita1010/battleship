@@ -27,12 +27,29 @@ const startManualMode = (human, bot) => {
   });
 };
 
+const startAutoMode = (player1, player2) => {
+  let currPlayer = player1;
+  const gameInterval = setInterval(() => {
+    const enemy = currPlayer === player1 ? player2 : player1;
+    const result = currPlayer.play(enemy, null, true);
+    const enemyBoardIndex = currPlayer === player1 ? 1 : 0;
+    markCell(result.coords, result.hit, enemyBoardIndex);
+    if (result.win) {
+      console.log(currPlayer.name);
+      clearInterval(gameInterval);
+    }
+    currPlayer = currPlayer === player1 ? player2 : player1;
+  }, 500);
+};
+
 const game = (mode, human, bot) => {
   removeBoardBtns();
   toggleVeil();
   if (mode === 'manual') {
     startManualMode(human, bot);
+    return;
   }
+  startAutoMode(human, bot);
 };
 
 export default game;
