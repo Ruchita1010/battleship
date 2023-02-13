@@ -36,7 +36,9 @@ const gameboardFactory = (size) => {
         ({ xCoord, yCoord }) => xCoord === x && yCoord === y
       )
     );
-    hitShipData.ship.hit();
+    if (hitShipData) {
+      hitShipData.ship.hit();
+    }
     return true;
   };
 
