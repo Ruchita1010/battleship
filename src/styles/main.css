@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Source+Sans+Pro&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -13,11 +15,13 @@
 #main-container {
   min-height: 100vh;
   background: url(../assets/bg.jpg) no-repeat center center/cover;
+  font-family: 'Cinzel Decorative', cursive;
 }
 
 .btn {
   color: var(--color-gainsboro);
   background-color: var(--color-blackolive);
+  font-family: 'Cinzel Decorative', cursive;
   letter-spacing: 4px;
   border: none;
   outline: none;

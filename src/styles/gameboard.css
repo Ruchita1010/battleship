@@ -51,6 +51,7 @@
   font-size: 2.5vmax;
   font-weight: bold;
   color: var(--color-blackolive);
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .miss::before {
@@ -60,6 +61,7 @@
   place-items: center;
   font-size: 2vmax;
   color: var(--color-blackolive);
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .veil {
