@@ -36,6 +36,7 @@ const playTurns = async (human, bot, e) => {
 const startManualMode = (human, bot) => {
   const cells = getGameboardCells(1);
   cells.forEach((cell) => {
+    cell.style.cursor = 'crosshair';
     cell.addEventListener('click', playTurns.bind(null, human, bot), {
       once: true,
     });
