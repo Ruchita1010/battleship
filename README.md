@@ -19,7 +19,7 @@ UI with a vintage vibe<br>
 
 ## Roadmap
 
-- [ ] Add sound effects
+- [x] Add sound effects
 - [ ] Add background music for 'auto' mode
 - [ ] Two player mode (human vs human)
 - [ ] Allow player to choose gameboard size
