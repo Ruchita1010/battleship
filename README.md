@@ -20,6 +20,7 @@ UI with a vintage vibe<br>
 ## Roadmap
 
 - [x] Add sound effects
+- [ ] Make computer/bot intelligent
 - [ ] Add background music for 'auto' mode
 - [ ] Two player mode (human vs human)
 - [ ] Allow player to choose gameboard size
