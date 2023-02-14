@@ -276,7 +276,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"bg.jpg\";\n\n//# sourceURL=webpack://battleship/./src/assets/bg.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/bg.jpg\";\n\n//# sourceURL=webpack://battleship/./src/assets/bg.jpg?");
 
 /***/ }),
 
@@ -286,7 +286,7 @@ eval("module.exports = __webpack_require__.p + \"bg.jpg\";\n\n//# sourceURL=webp
   \******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"hit.mp3\";\n\n//# sourceURL=webpack://battleship/./src/assets/sound-effects/hit.mp3?");
+eval("module.exports = __webpack_require__.p + \"assets/hit.mp3\";\n\n//# sourceURL=webpack://battleship/./src/assets/sound-effects/hit.mp3?");
 
 /***/ }),
 
@@ -296,7 +296,7 @@ eval("module.exports = __webpack_require__.p + \"hit.mp3\";\n\n//# sourceURL=web
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"miss.mp3\";\n\n//# sourceURL=webpack://battleship/./src/assets/sound-effects/miss.mp3?");
+eval("module.exports = __webpack_require__.p + \"assets/miss.mp3\";\n\n//# sourceURL=webpack://battleship/./src/assets/sound-effects/miss.mp3?");
 
 /***/ })
 
