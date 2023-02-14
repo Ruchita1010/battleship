@@ -4,6 +4,8 @@ import {
   getGameboardCells,
   toggleVeil,
 } from './utils';
+import shotHitSound from '../../assets/sound-effects/hit.mp3';
+import shotMissSound from '../../assets/sound-effects/miss.mp3';
 
 const createGameboardContainer = () => {
   const gameboardContainer = document.createElement('div');
@@ -84,8 +86,12 @@ const markCell = (coords, hit, gameboardIndex) => {
   );
   if (hit) {
     targetCell.classList.add('hit');
+    const hitSound = new Audio(shotHitSound);
+    hitSound.play();
     return;
   }
+  const missSound = new Audio(shotMissSound);
+  missSound.play();
   targetCell.classList.add('miss');
 };
 
